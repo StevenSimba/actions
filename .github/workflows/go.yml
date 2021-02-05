@@ -1,11 +1,41 @@
 name: A workflow for my first GitHub Action
-on: pull_request
-jobs:
+on: pull_request       #push or pull request from branch to master
+jobs:                  #jobs is the base for actions 
   build:
     name: My first Hello World action
+    runs-on: ubuntu-latest      #specify the os
+    steps:
+      - uses: actions/checkout@v1   #action gives access to repo files
+      - run: echo "hello world"
+
+  my-job:
+    name: My Job 
+    runs-on: ubuntu-latest 
+    steps: 
+      - name: Print greetings
+        env:
+          name: "Steve"
+          age: "18"
+        run:
+          echo Hello $name of $age yrs. 
+
+  go-test:
+    name : "running go tests"
+    strategy:
+      matrix:
+        go-version: [1.13.x, 1.14.x]
+        
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - run: echo "hello world"
+      - name: Install go 
+        uses: actions/setup-go@v2 
+        with:
+          go-version: ${{ matrix.go-version }}
+
+      - name: Checkout code
+        uses: actions/checkout@v2      #gives access to repo files
+
+      - name: Test 
+        run: go test 
      
 
