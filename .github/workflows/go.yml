@@ -36,6 +36,6 @@ jobs:                  #jobs is the base for actions
         uses: actions/checkout@v2      #gives access to repo files
 
       - name: Test 
-        run: go test .
+        run: go test 
      
 
