@@ -5,7 +5,7 @@ jobs:                  #jobs is the base for actions
     name: My first Hello World action
     runs-on: ubuntu-latest      #specify the os
     steps:
-      - uses: actions/checkout@v1   #action gives access to github
+      - uses: actions/checkout@v1   #action gives access to github files
       - run: echo "hello world"
 
   my-job:
@@ -19,5 +19,23 @@ jobs:                  #jobs is the base for actions
         run:
           echo Hello $name of $age yrs. 
 
+  go-test:
+    name : "running go tests"
+    strategy:
+      matrix:
+        go-version: [1.13x, 1.14x]
+        
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install go 
+        uses: actions/setup-go@v2 
+        with:
+          go-version: ${{ matrix.go-version }}
+
+      - name: Checkout code
+        uses: actions/checkout@v2 
+
+      - name: Test 
+        run: go test ./..
      
 
