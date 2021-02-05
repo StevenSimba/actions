@@ -1,11 +1,23 @@
 name: A workflow for my first GitHub Action
-on: pull_request
-jobs:
+on: pull_request       #push or pull request from branch to master
+jobs:                  #jobs is the base for actions 
   build:
     name: My first Hello World action
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest      #specify the os
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v1   #action gives access to github
       - run: echo "hello world"
+
+  my-job:
+    name: My Job 
+    runs-on: ubuntu-latest 
+    steps: 
+      - name: Print greetings
+        env:
+          name: "Steve"
+          age: "18"
+        run:
+          echo Hello $name of $age yrs. 
+
      
 
