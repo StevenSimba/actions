@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// Testing action
+// Testing git actions
 
 func Calculate(x int) int {
 	fmt.Println("The val is", x, "and x*x is", (x * x))
