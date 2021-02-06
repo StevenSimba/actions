@@ -5,7 +5,7 @@ jobs:                  #jobs is the base for actions
     name: My first Hello World action
     runs-on: ubuntu-latest      #specify the os
     steps:
-      - uses: actions/checkout@v1   #action gives access to repo files
+      - uses: actions/checkout@v1   #action gives access to terminal
       - run: echo "hello world"
 
   my-job:
